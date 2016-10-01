@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html ng-controller="appCtrl">
+<html lang="en">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Meta, title, CSS, favicons, etc. -->
@@ -7,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Yuber | Admin </title>
+  <title>Yuber | Admin</title>
 
   <!-- Bootstrap core CSS -->
 
@@ -21,11 +22,7 @@
   <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.3.css" />
   <link href="css/icheck/flat/green.css" rel="stylesheet" />
   <link href="css/floatexamples.css" rel="stylesheet" type="text/css" />
-  <!-- Select2 -->
-  <link href="css/select/select2.min.css" rel="stylesheet">
-    
-  <script type="text/javascript" src="js/lodash.js"></script>
-  <script type="text/javascript" src="js/moment/moment.min.js"></script>
+
   <script src="js/jquery.min.js"></script>
   <script src="js/nprogress.js"></script>
 
@@ -40,23 +37,12 @@
   <![endif]-->
 
   <script src="js/angular.min.js"></script>
-  <script src="js/angular-simple-logger.min.js"></script>
   <script src="js/angular-route.min.js"></script>
-
-  <style>
-	  #map {
-	    height: 400px;
-	  }
-	  
-	  .angular-google-map-container { 
-	  	height: 600px; 
-	  };
-  </style>
 
 </head>
 
 
-<body class="nav-md">
+<body class="nav-md" ng-app="atlas2">
 
   <div class="container body">
 
@@ -68,15 +54,18 @@
         <div class="left_col scroll-view">
 
           <div class="navbar nav_title" style="border: 0;">
-            <a href="#" class="site_title"><i class="fa fa-gamepad"></i> <span>Yuber - Admin</span></a>
+            <a href="#" class="site_title"><i class="fa fa-gamepad"></i> <span>Atlas2 - Admin</span></a>
           </div>
           <div class="clearfix"></div>
 
           <!-- menu prile quick info -->
-          <div class="profile clearfix" ng-show="empleadoLogueado">
+          <div class="profile clearfix">
+            <div class="profile_pic">
+              <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+            </div>
             <div class="profile_info">
               <span>Bienvenido,</span>
-              <h2>{{ empleadoLogueado.nombrePila + ' ' +  empleadoLogueado.apellido }}</h2>
+              <h2>Andrulo</h2>
             </div>
           </div>
           <!-- /menu prile quick info -->
@@ -86,65 +75,43 @@
           <!-- sidebar menu -->
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
-              <ul class="nav side-menu" ng-show="empleadoLogueado">
+              <ul class="nav side-menu">
                 <li>
                   <a href="#/"><i class="fa fa-home"></i> Inicio </a>
                 </li>
-                <li>
-                  <a href="#/viajes"><i class="fa fa-bus"></i> Viajes </a>
-                </li>
-                <ul class="nav side-menu">
-                  <li>
-                    <a><i class="fa fa-cubes"></i> Encomiendas <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu" style="display: none">
-                      <li>
-                        <a href="#/encomiendas/add"><i class="fa fa-home"></i> Alta </a>
-                      </li>
-                      <li>
-                        <a href="#/encomiendas/search"><i class="fa fa-home"></i> Busqueda </a>
-                      </li>
-                      <li>
-                        <a href="#/encomiendas/listByBus"><i class="fa fa-home"></i> Listado por coche </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-                <ul class="nav side-menu">
-                  <li>
-                    <a><i class="fa fa-magic"></i> Cofiguraciones <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu" style="display: none">
-                      <li>
-                        <a href="#/configuracion"><i class="fa fa-home"></i> Basicas </a>
-                      </li>
-                      <li>
-                        <a href="#/estadosencomienda"><i class="fa fa-home"></i> Estados de encomienda </a>
-                      </li>
-                      <li>
-                        <a href="#/reglacobroencomienda"><i class="fa fa-home"></i> Reglas de cobro de encomiendas </a>
-                      </li>
-                      <li>
-                        <a href="#/perfil"><i class="fa fa-home"></i> Perfiles </a>
-                      </li>
-                      <li>
-                        <a href="#/empleados"><i class="fa fa-home"></i> Empleados </a>
-                      </li>
-                      <li>
-                        <a href="#/vehiculos"><i class="fa fa-home"></i> Vehiculos </a>
-                      </li>
-                      <li>
-                        <a href="#/puntosrecorrido"><i class="fa fa-home"></i> Puntos de recorridos </a>
-                      </li>
-                      <li>
-                        <a href="#/recorridos"><i class="fa fa-home"></i> Recorridos </a>
-                      </li>
-                      <li>
-                        <a href="#/reportes"><i class="fa fa-home"></i> Reportes </a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
               </ul>
 
+              <ul class="nav side-menu">
+                <li>
+                  <a><i class="fa fa-magic"></i> Wizard <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li>
+                      <a href="#/mapa">Mapa</a>
+                    </li>
+                    <li>
+                      <a href="#/recurso">Recursos</a>
+                    </li>
+                    <li>
+                      <a href="#/destacamento">Destacamentos</a>
+                    </li>
+                    <li>
+                      <a href="#/edificio">Edificios</a>
+                    </li>
+                    <li>
+                      <a href="#/tecnologia">Tecnologías</a>
+                    </li>
+                    <li>
+                      <a href="#/dependencia">Dependencias</a>
+                    </li>
+                    <li>
+                      <a href="#/agrupacione">Agrupaciones</a>
+                    </li>
+                    <li>
+                      <a href="#/iteraccione">Iteracciones</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </div>
 
           </div>
@@ -161,15 +128,18 @@
         <div class="nav_menu">
           <nav class="" role="navigation">
 
-            <ul class="nav navbar-nav navbar-right" ng-show="empleadoLogueado">
+            <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  {{ empleadoLogueado.nombrePila + ' ' +  empleadoLogueado.apellido }}
+                  <img src="images/img.jpg" alt="">Andrulo
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
                   <li>
-                    <a ng-click="logout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a> Profile</a>
+                  </li>
+                  <li>
+                    <a><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </li>
                 </ul>
               </li>
@@ -197,7 +167,7 @@
       <!-- footer content -->
       <footer>
         <div class="pull-right">
-          LacBus - Proyecto 2016
+          .NET - Grupo 15
         </div>
         <div class="clearfix"></div>
       </footer>
@@ -211,49 +181,13 @@
 
   <script src="app/app.js"></script>
   
-  <!-- Select2 -->
-  <script type="text/javascript" src="js/select/select2.full.js"></script>
-  
-  
-  <script type="text/javascript" src="js/angular-google-maps.min.js"></script>
-  <script type="text/javascript" src="js/ngStorage.min.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVL227yFvpTa6b0oolhl3PW_BPGLFMnwI&signed_in=false"></script>
-  
-   <!-- services -->
-  <script src="app/services/configuracion.js"></script>
-  <script src="app/services/encomiendas.js"></script>
-  <script src="app/services/reportes.js"></script>
-  <script src="app/services/empleados.js"></script>
-  <script src="app/services/vehiculos.js"></script>
-  <script src="app/services/viajes.js"></script>
-  <script src="app/services/perfil.js"></script>
-  <script src="app/services/recorridos.js"></script>
-  <script src="app/services/puntosrecorrido.js"></script>
-  <script src="app/services/estadosencomienda.js"></script>
-  <script src="app/services/reglacobroencomienda.js"></script>
-  <script src="app/services/horariorecorrido.js"></script>
-  <script src="app/services/usuario.js"></script>
+  <!-- services -->
+  <script src="app/services/recurso.js"></script>
   
   <!-- controllers -->
   <script src="app/controllers/home.js"></script>
-  <script src="app/controllers/configuracion.js"></script>
-  <script src="app/controllers/encomiendas.js"></script>
-  <script src="app/controllers/reportes.js"></script>
-  <script src="app/controllers/empleados.js"></script>
-  <script src="app/controllers/vehiculos.js"></script>
-  <script src="app/controllers/viajes.js"></script>
-  <script src="app/controllers/perfil.js"></script>
-  <script src="app/controllers/recorridos.js"></script>
-  <script src="app/controllers/puntosrecorrido.js"></script>
-  <script src="app/controllers/estadosencomienda.js"></script>
-  <script src="app/controllers/reglacobroencomienda.js"></script>
-  <script src="app/controllers/preciorecorrido.js"></script>
-  <script src="app/controllers/horariorecorrido.js"></script>
-  <script src="app/controllers/login.js"></script>
-  
-  <script type="text/javascript" src="js/notify/pnotify.core.js"></script>
-  <script type="text/javascript" src="js/notify/pnotify.buttons.js"></script>
-  <script type="text/javascript" src="js/notify/pnotify.nonblock.js"></script>
+  <script src="app/controllers/recurso.js"></script>
+
 </body>
 
 </html>
