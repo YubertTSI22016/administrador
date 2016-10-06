@@ -42,7 +42,7 @@
 </head>
 
 
-<body class="nav-md" ng-app="atlas2">
+<body class="nav-md" ng-app="yuberAdmin">
 
   <div class="container body">
 
@@ -54,7 +54,7 @@
         <div class="left_col scroll-view">
 
           <div class="navbar nav_title" style="border: 0;">
-            <a href="#" class="site_title"><i class="fa fa-gamepad"></i> <span>Atlas2 - Admin</span></a>
+            <a href="#" class="site_title"><i class="fa fa-car"></i> <span>Yuber - Admin</span></a>
           </div>
           <div class="clearfix"></div>
 
@@ -65,7 +65,7 @@
             </div>
             <div class="profile_info">
               <span>Bienvenido,</span>
-              <h2>Andrulo</h2>
+              <h2>AdminMaster</h2>
             </div>
           </div>
           <!-- /menu prile quick info -->
@@ -83,31 +83,39 @@
 
               <ul class="nav side-menu">
                 <li>
-                  <a><i class="fa fa-magic"></i> Wizard <span class="fa fa-chevron-down"></span></a>
+                  <a><i class="fa fa-list"></i> Servicio <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li>
-                      <a href="#/mapa">Mapa</a>
+                      <a href="#/empleado">Empleados</a>
                     </li>
                     <li>
-                      <a href="#/recurso">Recursos</a>
+                      <a href="#/empleado">Tarifas</a>
                     </li>
                     <li>
-                      <a href="#/destacamento">Destacamentos</a>
+                      <a href="#/empleado">Configuración</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a><i class="fa fa-area-chart"></i> Reportes <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li>
+                      <a href="#/empleado">Usuarios Activos</a>
                     </li>
                     <li>
-                      <a href="#/edificio">Edificios</a>
+                      <a href="#/empleado">Ganancia Mensual</a>
                     </li>
                     <li>
-                      <a href="#/tecnologia">Tecnologías</a>
+                      <a href="#/empleado">Top proveedores via Reviews</a>
                     </li>
                     <li>
-                      <a href="#/dependencia">Dependencias</a>
+                      <a href="#/empleado">Top proveedores via Ganancia</a>
                     </li>
                     <li>
-                      <a href="#/agrupacione">Agrupaciones</a>
+                      <a href="#/empleado">Top usuarios via cantidad de servicios</a>
                     </li>
                     <li>
-                      <a href="#/iteraccione">Iteracciones</a>
+                      <a href="#/empleado">Top usuario via reviews</a>
                     </li>
                   </ul>
                 </li>
@@ -131,7 +139,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="images/img.jpg" alt="">Andrulo
+                  <img src="images/img.jpg" alt="">AdminMaster
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -183,10 +191,12 @@
   
   <!-- services -->
   <script src="app/services/recurso.js"></script>
+  <script src="app/services/empleado.js"></script>
   
   <!-- controllers -->
   <script src="app/controllers/home.js"></script>
   <script src="app/controllers/recurso.js"></script>
+  <script src="app/controllers/empleado.js"></script>
 
 </body>
 

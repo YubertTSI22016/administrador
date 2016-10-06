@@ -1,9 +1,9 @@
 ﻿(function () {
     'use strict';
-    angular.module('atlas2').controller("homeCtrl", ["$scope", homeCtrl]);
+    angular.module('yuberAdmin').controller("homeCtrl", ["$scope", homeCtrl]);
 
     function homeCtrl($scope) {
-        $scope.hole = "hola mathi"
+        $scope.hole = "Hola Mathi, probando Scope Hole"
     }
 
 })();

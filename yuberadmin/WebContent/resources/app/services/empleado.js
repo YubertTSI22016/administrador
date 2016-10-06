@@ -1,22 +1,22 @@
 ﻿(function () {
     'use strict';
-    angular.module('yuberAdmin').service('recursoService', ["$http", "$q", recursoService]);
+    angular.module('yuberAdmin').service('empleadoService', ["$http", "$q", empleadoService]);
 
-    function recursoService($http, $q) {
+    function empleadoService($http, $q) {
 
         var getAll = function(){
             var defer = $q.defer();
             
-            var algo = [
+            var listadoEmpleados = [
             	{
-            		id : 1, nombre: 'mati'
+            		id : 1, nombre: 'Empleado 1'
             	},
             	{
-            		id : 2, nombre: 'andres'
+            		id : 2, nombre: 'Otro Empleado'
             	}
             ];
 
-            defer.resolve(algo);
+            defer.resolve(listadoEmpleados);
 
             // $http.get('api/employee')
 	    	// .success(function (employees) {
