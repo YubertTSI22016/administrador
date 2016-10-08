@@ -5,15 +5,35 @@
     function administradorCtrl($scope, $routeParams, administradorService) {
         $scope.administradores = [];
         $scope.showAlert = false;
+        
+        var initialize = function(){
+            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null;
+            var type = $routeParams && $routeParams['type'] ? $routeParams['type'] : null;
+            
+            if(type == 'add'){
+            	return;
+            }
+            
+            if(id){
+            	administradorService.getId(id).then(function (data) {
+                    $scope.empleado = data;
+                });
+            }else{
+            	administradorService.getAll().then(function (data) {
+                	console.log('getAll')
+                    $scope.administradores = data;
+                });
+            }
+        }
 
-        administradorService.getAll().then(function (data) {
-            $scope.administradores = data;
-        });
+        
 
         $scope.agregar = function() {
-        
-            $scope.administradores.push(this.adinistrador);   
-        };
+        	console.log($scope.administradores)
+            $scope.administradores.push(this.administrador);
+        	
+        	console.log($scope.administradores)
+        }
 
         $scope.add = function(){
         	console.log(administrador.nombre)
@@ -24,7 +44,7 @@
         }
 
         
-
+        initialize();
     }
 
 })();
