@@ -1,12 +1,12 @@
 ﻿<div class="col-md-12 col-sm-12 col-xs-12">
   <div class="page-title">
     <div class="title_left">
-      <h3>Empleados</h3>
+      <h3>Administradores</h3>
     </div>
 
     <div class="title_right">
       <div class="pull-right">
-        <a href="#/empleado/add" class="btn btn-info">Nuevo Empleado</a>
+        <a href="#/administrador/add" class="btn btn-info">Nuevo Administrador</a>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Listado de empleados</h2>
+      <h2>Listado de administradores</h2>
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
@@ -31,15 +31,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="empleado in empleados">
-            <th scope="row">{{empleado.id}}</th>
-            <td>{{empleado.nombre+" "+empleado.apellido}}</td>
-            <td>{{empleado.username}}</td>
+          <tr ng-repeat="administrador in administradores">
+            <th scope="row">{{administrador.id}}</th>
+            <td>{{administrador.nombre+" "+administrador.apellido}}</td>
+            <td>{{administrador.username}}</td>
             <td><input type="checkbox" class="flat to_do"></td>
             <td>
               <div class="btn-group">
                 
-                <a href="#/empleado/edit/{{empleado.id}}" class="btn btn-info btn-xs" ng-click="edit()"><i class="fa fa-pencil"></i> </a>
+                <a href="#/administrador/edit/{{administrador.id}}" class="btn btn-info btn-xs" ng-click="edit()"><i class="fa fa-pencil"></i> </a>
                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a>
               </div>
             </td>

@@ -11,7 +11,7 @@
 		    templateUrl : "app/views/home.html",
 		    controller  : 'homeCtrl'
 		}).otherwise({
-            redirectTo 	: '/'
+            redirectTo 	: '/error'
         });
         
         console.log("saasa")
@@ -28,16 +28,16 @@
 		    controller  : 'recursoCtrl'
 		});
 
-		// ruta de empleado
-		$routeProvider.when("/empleado", {
-		    templateUrl : "app/views/empleado/list.html",
-		    controller  : 'empleadoCtrl'
-		}).when("/empleado/add", {
-		    templateUrl : "app/views/empleado/add.html",
-		    controller  : 'empleadoCtrl'
-		}).when("/empleado/edit/:id", {
-		    templateUrl : "app/views/empleado/edit.html",
-		    controller  : 'empleadoCtrl'
+		// ruta de administrador
+		$routeProvider.when("/administrador", {
+		    templateUrl : "app/views/administrador/list.html",
+		    controller  : 'administradorCtrl'
+		}).when("/administrador/add", {
+		    templateUrl : "app/views/administrador/add.html",
+		    controller  : 'administradorCtrl'
+		}).when("/administrador/edit/:id", {
+		    templateUrl : "app/views/adminsitrador/edit.html",
+		    controller  : 'administradorCtrl'
 		});
     }
 
