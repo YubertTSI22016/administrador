@@ -37,6 +37,30 @@
 		    templateUrl : "app/views/administrador/edit.html",
 		    controller  : 'administradorCtrl'
 		});
+
+		// ruta de configuracion
+		$routeProvider.when("/configuracion", {
+		    templateUrl : "app/views/configuracion/edit.html",
+		    controller  : 'configuracionCtrl'
+		});
+
+		// ruta de Clientes
+		$routeProvider.when("/cliente", {
+		    templateUrl : "app/views/cliente/list.html",
+		    controller  : 'clienteCtrl'
+		});
+
+		// ruta de Proveedores
+		$routeProvider.when("/proveedor", {
+		    templateUrl : "app/views/proveedor/list.html",
+		    controller  : 'proveedorCtrl'
+		});
+
+		// ruta de Reportes
+		$routeProvider.when("/reporte", {
+		    templateUrl : "app/views/reporte/list.html",
+		    controller  : 'reporteCtrl'
+		});
     }
 
 })();
