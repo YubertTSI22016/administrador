@@ -1,8 +1,13 @@
 ﻿(function () {
+	
 
     angular.module('yuberAdmin', ['ngRoute']);
 
     angular.module('yuberAdmin').config(['$routeProvider', configFunction]);
+
+    angular.module('yuberAdmin').constant('CONFIG', {
+		 'URL' : 'http://localhost:8080/yuberapi/rest'
+	});
 
     /*@ngInject*/
     function configFunction($routeProvider) {

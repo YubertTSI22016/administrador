@@ -3,15 +3,17 @@
     angular.module('yuberAdmin').controller('administradorCtrl', ['$scope', '$routeParams', 'administradorService', administradorCtrl]);
 
     function administradorCtrl($scope, $routeParams, administradorService) {
-        $scope.administradores = [];
+        var administrador = [];
         $scope.showAlert = false;
-        
+
         var initialize = function(){
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null;
             var type = $routeParams && $routeParams['type'] ? $routeParams['type'] : null;
             
             if(type == 'add'){
-            	return;
+                
+            
+//            	
             }
             
             if(id){
@@ -26,17 +28,30 @@
             }
         }
 
-        
 
         $scope.agregar = function() {
-        	console.log($scope.administradores)
-            $scope.administradores.push(this.administrador);
         	
-        	console.log($scope.administradores)
+        	var nuevoAdmin = {
+                    nombre : this.administrador.nombre, 
+                    apellido: this.administrador.apellido,
+                    email: {
+                    	email: this.administrador.email,
+                    	descripcion: "Admin Creado"
+                    	},
+                    clave: this.administrador.clave
+                }
+            administradorService.add(nuevoAdmin).then(function (data) {
+            		
+                    console.log(data);
+                });
+        	
         }
 
-        $scope.add = function(){
-        	console.log(administrador.nombre)
+        $scope.remove = function(id){
+        	administradorService.remove(id).then(function (data) {
+        		
+                console.log(data);
+            });
         }
 
         $scope.edit = function(){
