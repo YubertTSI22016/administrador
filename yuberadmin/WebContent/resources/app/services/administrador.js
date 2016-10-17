@@ -17,7 +17,24 @@
 		
 	        return defer.promise;
 		};
+
+		var remove = function(adm){
+	           
+	           adm.eliminado = true;
+	           console.log("se va a eliminar: " + adm.id);
+
+	           var defer = $q.defer();
+	           $http.post(CONFIG.URL + '/admins/modificar',adm)
+		           .success(function (admi) {
+		               defer.resolve(admi);
+		           })
+		           .error(function(){
+		               defer.reject('server error')
+		           });
 	
+	       return defer.promise;
+		};
+
 	       var add = function(administrador){
 	           var defer = $q.defer();
 	           
@@ -79,6 +96,7 @@
 	           getId   : getId,
 	           add     : add,
 	           borrar  : borrar,
+	           remove  : remove,
 	           edit    : edit
 	       }
 

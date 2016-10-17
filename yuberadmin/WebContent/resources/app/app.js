@@ -19,17 +19,6 @@
             redirectTo 	: '/error'
         });
 
-		// ruta de recursos
-//		$routeProvider.when("/recurso", {
-//		    templateUrl : "app/views/recurso/list.html",
-//		    controller  : 'recursoCtrl'
-//		}).when("/recurso/add", {
-//		    templateUrl : "app/views/recurso/add.html",
-//		    controller  : 'recursoCtrl'
-//		}).when("/recurso/edit/:id", {
-//		    templateUrl : "app/views/recurso/edit.html",
-//		    controller  : 'recursoCtrl'
-//		});
 
 		// ruta de administrador
 		$routeProvider.when("/administrador", {
