@@ -17,7 +17,7 @@
 		
 	        return defer.promise;
 		};
-	
+		
        var add = function(administrador){
            var defer = $q.defer();
            
