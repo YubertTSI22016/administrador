@@ -1,8 +1,12 @@
 ﻿(function () {
     'use strict';
-    angular.module('yuberAdmin').controller('reporteCtrl', ['$scope', '$routeParams', 'reporteService', reporteCtrl]);
+    angular.module('yuberAdmin').controller('reporteCtrl', ['$scope', '$routeParams', 'reporteService', '$localStorage', '$location', reporteCtrl]);
 
-    function reporteCtrl($scope, $routeParams, reporteService) {
+    function reporteCtrl($scope, $routeParams, reporteService, $localStorage, $location) {
+    	if(!$localStorage.empleadoLogueado){
+			$location.url('/login');
+		}
+    	
         $scope.reportes     = [];
         $scope.showAlert    = false;
 

@@ -1,8 +1,12 @@
 ﻿(function () {
     'use strict';
-    angular.module('yuberAdmin').controller("homeCtrl", ["$scope", homeCtrl]);
+    angular.module('yuberAdmin').controller("homeCtrl", ["$scope", '$localStorage', '$location', homeCtrl]);
 
-    function homeCtrl($scope) {
+    function homeCtrl($scope, $localStorage, $location) {
+    	if(!$localStorage.empleadoLogueado){
+			$location.url('/login');
+		}
+    	    	
         $scope.hole = "Hola Mathi, probando Scope Hole"
     }
 

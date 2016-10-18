@@ -1,8 +1,12 @@
 ﻿(function () {
     'use strict';
-    angular.module('yuberAdmin').controller('proveedorCtrl', ['$scope', '$routeParams', 'proveedorService', proveedorCtrl]);
+    angular.module('yuberAdmin').controller('proveedorCtrl', ['$scope', '$routeParams', 'proveedorService', '$localStorage', '$location', proveedorCtrl]);
 
-    function proveedorCtrl($scope, $routeParams, proveedorService) {
+    function proveedorCtrl($scope, $routeParams, proveedorService, $localStorage, $location) {
+    	if(!$localStorage.empleadoLogueado){
+			$location.url('/login');
+		}
+    	
         $scope.proveedores     = [];
         $scope.showAlert    = false;
 

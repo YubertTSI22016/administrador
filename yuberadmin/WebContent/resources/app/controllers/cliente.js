@@ -1,8 +1,12 @@
 ﻿(function () {
     'use strict';
-    angular.module('yuberAdmin').controller('clienteCtrl', ['$scope', '$routeParams', 'clienteService', clienteCtrl]);
+    angular.module('yuberAdmin').controller('clienteCtrl', ['$scope', '$routeParams', 'clienteService', '$localStorage', '$location', clienteCtrl]);
 
-    function clienteCtrl($scope, $routeParams, clienteService) {
+    function clienteCtrl($scope, $routeParams, clienteService, $localStorage, $location) {
+    	if(!$localStorage.empleadoLogueado){
+			$location.url('/login');
+		}
+    	
         $scope.clientes     = [];
         $scope.showAlert    = false;
 

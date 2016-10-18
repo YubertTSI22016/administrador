@@ -1,12 +1,14 @@
 ﻿(function () {
 	
 
-    angular.module('yuberAdmin', ['ngRoute']);
+    angular.module('yuberAdmin', ['ngRoute', 'ngStorage']);
 
     angular.module('yuberAdmin').config(['$routeProvider', configFunction]);
+    
+    angular.module('yuberAdmin').controller('appCtrl', ['$scope', '$location', '$localStorage', appCtrl]);
 
     angular.module('yuberAdmin').constant('CONFIG', {
-		 'URL' : 'http://localhost:8080/yuberapi/rest'
+		 'URL' : '/yuberapi/rest'
 	});
 
     /*@ngInject*/
@@ -18,18 +20,11 @@
 		}).otherwise({
             redirectTo 	: '/error'
         });
-
-		// ruta de recursos
-//		$routeProvider.when("/recurso", {
-//		    templateUrl : "app/views/recurso/list.html",
-//		    controller  : 'recursoCtrl'
-//		}).when("/recurso/add", {
-//		    templateUrl : "app/views/recurso/add.html",
-//		    controller  : 'recursoCtrl'
-//		}).when("/recurso/edit/:id", {
-//		    templateUrl : "app/views/recurso/edit.html",
-//		    controller  : 'recursoCtrl'
-//		});
+        
+        $routeProvider.when("/login", {
+		    templateUrl : "app/views/login.html",
+		    controller  : 'loginCtrl'
+		});
 
 		// ruta de administrador
 		$routeProvider.when("/administrador", {
@@ -67,5 +62,23 @@
 		    controller  : 'reporteCtrl'
 		});
     }
+    
+    function appCtrl($scope, $location, $localStorage) {
+        $scope.empleadoLogueado = $localStorage.empleadoLogueado;
+                        
+        $scope.logout = function(){
+        	$localStorage.$reset();
+        	$scope.empleadoLogueado = null;
+        	$location.url('/login');
+        }
+        
+        $scope.$on('localStorage:changed', function(event, data){
+        	$scope.empleadoLogueado = $localStorage.empleadoLogueado;
+        });
+    }
+    
+    angular.element(document).ready(function() {
+        angular.bootstrap(document, ['yuberAdmin']);
+    });
 
 })();

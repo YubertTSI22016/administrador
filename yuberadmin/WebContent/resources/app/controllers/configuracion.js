@@ -1,8 +1,12 @@
 ﻿(function () {
     'use strict';
-    angular.module('yuberAdmin').controller('configuracionCtrl', ['$scope', '$routeParams', 'configuracionService', configuracionCtrl]);
+    angular.module('yuberAdmin').controller('configuracionCtrl', ['$scope', '$routeParams', 'configuracionService', '$localStorage', '$location', configuracionCtrl]);
 
-    function configuracionCtrl($scope, $routeParams, configuracionService) {
+    function configuracionCtrl($scope, $routeParams, configuracionService, $localStorage, $location) {
+    	if(!$localStorage.empleadoLogueado){
+			$location.url('/login');
+		}
+    	
         $scope.configuracioness = [];
         $scope.showAlert = false;
         

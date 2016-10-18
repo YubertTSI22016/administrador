@@ -1,8 +1,12 @@
 ﻿(function () {
     'use strict';
-    angular.module('yuberAdmin').controller('administradorCtrl', ['$scope', '$routeParams', 'administradorService', administradorCtrl]);
+    angular.module('yuberAdmin').controller('administradorCtrl', ['$scope', '$routeParams', 'administradorService', '$localStorage', '$location', administradorCtrl]);
 
-    function administradorCtrl($scope, $routeParams, administradorService) {
+    function administradorCtrl($scope, $routeParams, administradorService, $localStorage, $location) {
+    	if(!$localStorage.empleadoLogueado){
+			$location.url('/login');
+		}
+    	
         var administrador = [];
         $scope.showAlert = false;
 
