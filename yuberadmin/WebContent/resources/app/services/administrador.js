@@ -7,7 +7,7 @@
 	   var getAll = function(){
 	       var defer = $q.defer();
 	
-	       $http.get(CONFIG.URL + '/admins/listar')
+	       $http.get(CONFIG.URL + '/vertical/listaradmins')
 			.success(function (empleados) {
 				defer.resolve(empleados);
 			})
@@ -21,7 +21,7 @@
        var add = function(administrador){
            var defer = $q.defer();
            
-           $http.post(CONFIG.URL + '/admins/alta', administrador)
+           $http.post(CONFIG.URL + '/vertical/altaadmin', administrador)
            .success(function (adm) {
                defer.resolve(adm);
            })
@@ -46,10 +46,10 @@
            return defer.promise;
        };
 
-       var borrar = function(id){
+       var remove = function(adm){
            var defer = $q.defer();
-           var aEliminar = { 'idEmpleado' : id}
-           $http.post('/lcbsapi/rest/usuarios/bajaempleado',aEliminar)
+           adm.eliminado = true;
+           $http.post(CONFIG.URL + '/vertical/modificaradmin',adm)
            .success(function (emp) {
                defer.resolve(emp);
            })
@@ -92,7 +92,7 @@
            getAll  : getAll,
            getId   : getId,
            add     : add,
-           borrar  : borrar,
+           remove  : remove,
            edit    : edit,
            login   : login
        }

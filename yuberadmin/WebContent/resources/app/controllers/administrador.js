@@ -34,17 +34,18 @@
 
 
         $scope.agregar = function() {
-        	
+        	var correo = { "email" : this.administrador.email };
+
         	var nuevoAdmin = {
                     nombre : this.administrador.nombre, 
                     apellido: this.administrador.apellido,
-                    email: {
-                    	email: this.administrador.email,
-                    	descripcion: "Admin Creado"
-                    	},
+                    email: correo,
                     clave: this.administrador.clave
                 }
-            administradorService.add(nuevoAdmin).then(function (data) {
+
+            var este = JSON.stringify(nuevoAdmin);
+            console.log(este);
+            administradorService.add(este).then(function (data) {
             		
                     console.log(data);
                 });

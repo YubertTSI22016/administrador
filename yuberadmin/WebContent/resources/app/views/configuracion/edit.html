@@ -13,7 +13,7 @@
   <div class="x_panel">
     <div class="x_content">
       <br>
-      <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+      <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate=""  ng-submit="guardarConf()">
 
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">ID</label>
@@ -27,15 +27,19 @@
             <input type="text" class="form-control" placeholder="Nombre del Servicio" ng-model="configuracion.nombre">
           </div>
         </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de Servicio</label>
-          <div class="col-md-9 col-sm-9 col-xs-12">
-            <select class="form-control">
-              <option>Transporte</option>
-              <option>Servicio</option>
-              <option>Remoto</option>
-            </select>
-          </div>
+       <div class="form-group">
+           <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                      
+     <input type="radio" ng-model="configuracion.transporte" ng-value="true" ng-checked="configuracion.transporte">
+     Transporte
+
+ &nbsp;&nbsp;
+
+     <input type="radio" ng-model="configuracion.transporte" ng-value="false" ng-checked="!configuracion.transporte">
+     Servicios
+
+                    </div>
         </div>
         <div class="form-group">
           <label class="col-md-3 col-sm-3 col-xs-12 control-label">Habilitado
@@ -46,7 +50,7 @@
           <div class="col-md-9 col-sm-9 col-xs-12">
             <div class="checkbox">
               <label>
-                <input type="checkbox" value="">
+                <input type="checkbox" value="" ng-model="configuracion.habilitado" ng-value="true" ng-checked="configuracion.habilitado">
               </label>
             </div>
           </div>
@@ -55,40 +59,22 @@
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">Tarifa Base</label>
           <div class="col-md-9 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" placeholder="Ingrese una tarifa bas" ng-model="configuracion.tarifabase">
+            <input type="text" class="form-control" placeholder="Ingrese una tarifa bas" ng-model="configuracion.tarifaBase">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">Precio por KM</label>
           <div class="col-md-9 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" placeholder="Ingrese el precio por KM" ng-model="configuracion.precioporkm">
+            <input type="text" class="form-control" placeholder="Ingrese el precio por KM" ng-model="configuracion.precioPorKm">
           </div>
         </div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">Precio por Hora</label>
           <div class="col-md-9 col-sm-9 col-xs-12">
-            <input type="text" class="form-control" placeholder="Ingrese el precio por hora" ng-model="configuracion.precioporhora">
+            <input type="text" class="form-control" placeholder="Ingrese el precio por hora" ng-model="configuracion.precioPorHora">
           </div>
         </div>
-        <div class="ln_solid"></div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">Color Fondo</label>
-          <div class="col-md-9 col-sm-9 col-xs-12">
-            <div class="input-group demo2">
-              <input type="text" value="#e01ab5" class="form-control" />
-              <span class="input-group-addon"><i></i></span>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">Color Texto</label>
-          <div class="col-md-9 col-sm-9 col-xs-12">
-            <div class="input-group demo2">
-              <input type="text" value="#e01ab5" class="form-control" />
-              <span class="input-group-addon"><i></i></span>
-            </div>
-          </div>
-        </div>
+        
 
         <div class="ln_solid"></div>
         <div class="form-group">
