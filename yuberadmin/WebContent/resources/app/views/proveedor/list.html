@@ -1,7 +1,7 @@
 ﻿<div class="col-md-12 col-sm-12 col-xs-12">
   <div class="page-title">
     <div class="title_left">
-      <h3>Empleados</h3>
+      <h3>Proveedores</h3>
     </div>
 
   </div>
@@ -18,22 +18,22 @@
       <table class="table table-hover table-striped">
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Jornada</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="empleado in empleados">
-            <th scope="row">1</th>
-            <td>{{empleado.nombre}}</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+          <tr ng-repeat="proveedor in proveedores">
+            <td>{{proveedor.usuario.email.email}}</td>
+            <td>{{proveedor.usuario.nombre}}</td>
+            <td>{{proveedor.usuario.apellido}}</td>
+            <td>{{ (proveedor.activo) ? 'Jornada Iniciada' : 'Jornada NO Iniciada' }}</td>
             <td>
               <div class="btn-group">
-                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a>
+                <a ng-click="remove($index)" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a>
               </div>
             </td>
           </tr>

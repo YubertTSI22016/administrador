@@ -32,12 +32,11 @@
            return defer.promise;
        };
 
-       var edit = function(empleado){
+       var edit = function(administradorModificado){
            var defer = $q.defer();
-
-           $http.post('/lcbsapi/rest/usuarios/editarempleado', empleado)
-           .success(function (emp) {
-               defer.resolve(emp);
+           $http.post(CONFIG.URL + '/vertical/modificaradmin', administradorModificado)
+           .success(function (admin) {
+               defer.resolve(admin);
            })
            .error(function(){
                defer.reject('server error')
@@ -48,10 +47,9 @@
 
        var remove = function(adm){
            var defer = $q.defer();
-           adm.eliminado = true;
            $http.post(CONFIG.URL + '/vertical/modificaradmin',adm)
-           .success(function (emp) {
-               defer.resolve(emp);
+           .success(function (adm) {
+               defer.resolve(adm);
            })
            .error(function(){
                defer.reject('server error')
@@ -60,12 +58,13 @@
            return defer.promise;
        };
 
+
        var getId = function(id){
            var defer = $q.defer();
 
-           $http.get('/lcbsapi/rest/usuarios/getempleado/'+id)
-           .success(function (emp) {
-               defer.resolve(emp);
+           $http.get(CONFIG.URL + '/vertical/obteneradmin/'+id)
+           .success(function (adm) {
+                defer.resolve(adm);
            })
            .error(function(){
                defer.reject('server error')

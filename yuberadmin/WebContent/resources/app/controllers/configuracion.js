@@ -37,25 +37,34 @@
         }
 
         $scope.guardarConf = function() {
-            var guardarTenant = {
-                            id : this.configuracion.id,
-                            nombre : this.configuracion.nombre,
-                            transporte : true,
-                            habilitado : true,
-                            tarifaBase : this.configuracion.tarifaBase,
-                            precioPorKm : this.configuracion.precioPorKm,
-                            precioPorHora : this.configuracion.precioPorHora
-                        }
-
-           
-            console.log(guardarTenant);
-            configuracionService.save(guardarTenant).then(function (data) {
-                    
-                    console.log(data);
-                });
+            var editadoConfiguracion = this.configuracion;
+            configuracionService.save(editadoConfiguracion).then(function (data) {
+                mostrarNotificacion('success', 'Se ha modificado la configuración');
+                window.history.back();
+            });
             
         }
+        
+        var mostrarNotificacion = function (tipo, text) {
+            var title = '';
 
+            if (tipo == 'success') {
+                var title = 'Exito!';
+                text || (text = 'Acción realizada con exito.');
+            } else if (tipo == 'error') {
+                var title = 'Oh No!';
+                text || (text = 'Ha ocurrido un error.');
+            }
+
+            new PNotify({
+                title: title,
+                text: text,
+                type: tipo,
+                nonblock: {
+                    nonblock: true
+                }
+            });
+        }
         
         initialize();
     }

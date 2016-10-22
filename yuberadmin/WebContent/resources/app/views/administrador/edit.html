@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="page-title">
     <div class="title_left">
-      <h3>Agregar Empleado</h3>
+      <h3>Editar Administrador</h3>
     </div>
   </div>
 </div>
@@ -9,38 +9,38 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
   <div class="x_panel">
     <div class="x_title">
-      <h2>Nuevo Administrador</h2>
+      <h2>Editar</h2>
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
       <br>
-      <form class="form-horizontal form-label-left" novalidate="" ng-submit="agregar()">
+      <form name="adminForm" class="form-horizontal form-label-left" novalidate="" ng-submit="edit()">
 
         <div class="item form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre <span class="required">*</span>
           </label>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="name" class="form-control col-md-7 col-xs-12" name="name" placeholder="Nombre del Administrador" type="text" ng-model="administrador.nombre" value="Cargar NOMBRE">
+            <input id="name" class="form-control col-md-7 col-xs-12" name="name" placeholder="Nombre del Administrador" type="text" ng-model="administrador.nombre">
           </div>
         </div>
         <div class="item form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido <span class="required">*</span>
           </label>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="name" class="form-control col-md-7 col-xs-12" name="name" placeholder="Apellido del Administrador" type="text" ng-model="administrador.apellido" value="Cargar APELLIDO">
+            <input id="name" class="form-control col-md-7 col-xs-12" name="name" placeholder="Apellido del Administrador" type="text" ng-model="administrador.apellido">
           </div>
         </div>
         <div class="item form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
           </label>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <input type="email" id="email" name="email" class="form-control col-md-7 col-xs-12" ng-model="administrador.email" value="Cargar EMAIL">
+            <input type="email" id="email" name="email" class="form-control col-md-7 col-xs-12" ng-model="administrador.email.email">
           </div>
         </div>
         <div class="item form-group">
           <label for="password" class="control-label col-md-3">Password</label>
           <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="password" type="password" name="password" class="form-control col-md-7 col-xs-12"  ng-model="administrador.password">
+            <input id="password" type="password" name="password" class="form-control col-md-7 col-xs-12"  ng-model="administrador.clave">
           </div>
         </div>
         <div class="item form-group">
@@ -53,7 +53,7 @@
         <div class="form-group">
           <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
             <a href="#/administrador" class="btn btn-primary">Cancelar</a>
-            <button class="btn btn-success">Agregar</button>
+            <button class="btn btn-success">Guardar</button>
           </div>
         </div>
       </form>
