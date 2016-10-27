@@ -3,26 +3,49 @@
     angular.module('yuberAdmin').controller('reporteCtrl', ['$scope', '$routeParams', 'reporteService', '$localStorage', '$location', reporteCtrl]);
 
     function reporteCtrl($scope, $routeParams, reporteService, $localStorage, $location) {
-    	if(!$localStorage.empleadoLogueado){
-			$location.url('/login');
-		}
-    	
-        $scope.reportes     = [];
-        $scope.showAlert    = false;
+        if(!$localStorage.empleadoLogueado){
+            $location.url('/login');
+        }
+        
+        var proveedor = {email:null};
+        var proveedores = [];
+        $scope.showAlert = false;
 
-        reporteService.getAll().then(function (data) {
-        	console.log(data);
-            $scope.reportes = data;
-        });
+        var initialize = function(){
+            var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null;
+            var type = $routeParams && $routeParams['type'] ? $routeParams['type'] : null;
+            
 
-        $scope.add = function(){
-        	console.log('aaaddd')
+
+            reporteService.reporteRatingProv().then(function (data) {
+                console.log('reporteRatingProv')
+                $scope.proveedores = data;
+            });
+            
         }
 
-        $scope.edit = function(){
-        	console.log('edit')
-        }
+        var mostrarNotificacion = function (tipo, text) {
+            var title = '';
 
+            if (tipo == 'success') {
+                var title = 'Exito!';
+                text || (text = 'Acción realizada con exito.');
+            } else if (tipo == 'error') {
+                var title = 'Oh No!';
+                text || (text = 'Ha ocurrido un error.');
+            }
+
+            new PNotify({
+                title: title,
+                text: text,
+                type: tipo,
+                nonblock: {
+                    nonblock: true
+                }
+            });
+        }
+        
+        initialize();
     }
 
 })();

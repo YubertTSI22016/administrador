@@ -35,7 +35,7 @@
           </div>
           <div class="x_content">
             <p class="text-muted font-13 m-b-30">
-              Se puede hacer un top de proveedores ordenando por <b>Reviews</b> y <b>Ganancias</b>.
+              Top proveedores por <b>Reviews</b>.
             </p>
             <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
               <thead>
@@ -48,47 +48,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Mathías</td>
-                  <td>De León</td>
-                  <td>mathiasdlm@gmail.com</td>
+                <tr ng-repeat="proveedor in proveedores | orderBy:'proveedor.rating':true">
+                  <td>{{proveedor.usuario.nombre}}</td>
+                  <td>{{proveedor.usuario.apellido}}</td>
+                  <td>{{proveedor.usuario.email.email}}</td>
                   <td><p class="ratings">
-                              <a>4.0</a>
+                              <a>{{proveedor.rating}}</a>
                               <a href="#"><span class="fa fa-star"></span></a>
                               <a href="#"><span class="fa fa-star"></span></a>
                               <a href="#"><span class="fa fa-star"></span></a>
                               <a href="#"><span class="fa fa-star"></span></a>
                               <a href="#"><span class="fa fa-star-o"></span></a>
                             </p></td>
-                  <td>$5685,26</td>
-                </tr>
-                <tr>
-                  <td>Andres</td>
-                  <td>Botta</td>
-                  <td>andrulo@gmail.com</td>
-                  <td><p class="ratings">
-                              <a>3.0</a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star-o"></span></a>
-                              <a href="#"><span class="fa fa-star-o"></span></a>
-                            </p></td>
-                  <td>$2000,26</td>
-                </tr>
-                <tr>
-                  <td>Mauro</td>
-                  <td>Cumpleañero</td>
-                  <td>Maaaaauro@gmail.com</td>
-                  <td><p class="ratings">
-                              <a>5.0</a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                            </p></td>
-                  <td>$1000,16</td>
+                  <td>PONER PLATA</td>
                 </tr>
                 
               </tbody>
@@ -99,82 +71,8 @@
       </div>
     </div>
   </div>
-</div>
+</div> <h2>Top Clientes <small>vía Reviews/Cantidad de Servicios</small></h2>
 
-<div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="x_panel">
-          <div class="x_title">
-            <h2>Top Clientes <small>vía Reviews/Cantidad de Servicios</small></h2>
-            <ul class="nav navbar-right panel_toolbox">
-              <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-              </li>
-            </ul>
-            <div class="clearfix"></div>
-          </div>
-          <div class="x_content">
-            <p class="text-muted font-13 m-b-30">
-              Se puede hacer un top de clientes ordenando por <b>Reviews</b> y <b>Cantidad de Servicios</b>.
-            </p>
-            <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-              <thead>
-                <tr>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Usuario</th>
-                  <th>Review</th>
-                  <th># Servicios</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mathías</td>
-                  <td>De León</td>
-                  <td>mathiasdlm@gmail.com</td>
-                  <td><p class="ratings">
-                              <a>4.0</a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star-o"></span></a>
-                            </p></td>
-                  <td>20</td>
-                </tr>
-                <tr>
-                  <td>Andres</td>
-                  <td>Botta</td>
-                  <td>andrulo@gmail.com</td>
-                  <td><p class="ratings">
-                              <a>3.0</a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star-o"></span></a>
-                              <a href="#"><span class="fa fa-star-o"></span></a>
-                            </p></td>
-                  <td>10</td>
-                </tr>
-                <tr>
-                  <td>Mauro</td>
-                  <td>Cumpleañero</td>
-                  <td>Maaaaauro@gmail.com</td>
-                  <td><p class="ratings">
-                              <a>5.0</a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                              <a href="#"><span class="fa fa-star"></span></a>
-                            </p></td>
-                  <td>15</td>
-                </tr>
-                
-              </tbody>
-            </table>
-
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </div>

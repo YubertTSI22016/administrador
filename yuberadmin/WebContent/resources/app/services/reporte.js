@@ -1,38 +1,27 @@
 ﻿(function () {
-    'use strict';
-    angular.module('yuberAdmin').service('reporteService', ["$http", "$q", reporteService]);
+   'use strict';
+   angular.module('yuberAdmin').service('reporteService', ["$http", "$q","CONFIG", reporteService]);
 
-    function reporteService($http, $q) {
+   function reporteService($http, $q, CONFIG) {
 
-        var getAll = function(){
-            var defer = $q.defer();
-            
-            var algo = [
-            	{
-            		id : 1, nombre: 'mati'
-            	},
-            	{
-            		id : 2, nombre: 'andres'
-            	}
-            ];
-
-            defer.resolve(algo);
-
-            // $http.get('api/employee')
-	    	// .success(function (employees) {
-	    	//     defer.resolve(employees);
-	    	// })
-	    	// .error(function(){
-	    	//     defer.reject('server error')
-	    	// });
-
+       var reporteRatingProv = function(){
+           var defer = $q.defer();
+    
+           $http.get(CONFIG.URL + '/vertical/reporteratingprov/1/10/5')
+            .success(function (reporte) {
+                defer.resolve(reporte);
+            })
+            .error(function(){
+                defer.reject('server error')
+            });
+        
             return defer.promise;
         };
+        
+    return {
+           reporteRatingProv  : reporteRatingProv,
+       }
 
-        return {
-            getAll : getAll
-        }
-
-    }
+   }
 
 })();
