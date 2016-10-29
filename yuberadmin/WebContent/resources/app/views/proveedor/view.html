@@ -1,0 +1,63 @@
+﻿<link rel="stylesheet" type="text/css" href="css/progressbar/bootstrap-progressbar-3.3.0.css">
+  <!-- bootstrap progress js -->
+  <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
+
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Detalle del proveedor</h3>
+    </div>
+
+  </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_content">
+      <div class="row top_tiles">
+        <div class="animated flipInY col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="tile-stats">
+            <div class="icon"><i class="fa fa-user"></i>
+            </div>
+            <div class="count">{{proveedor.usuario.nombre +" "+ proveedor.usuario.apellido}}</div>
+
+            <h3>{{proveedor.usuario.email.email}}</h3>
+            <p>{{ (proveedor.activo) ? 'Jornada Iniciada' : 'Jornada NO Iniciada' }}</p>
+            <p><a>Rating: {{proveedor.rating}}</a>
+              <div class="progress progress_sm" style="width: 76%;margin-left: 10px;">
+                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="{{proveedor.rating}}"></div>
+              </div>
+            </p>
+          </div>
+        </div>  
+      </div>  
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Cantidad de Servicios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="jornada in proveedor.jornadas">
+           
+            <td>{{jornada.inicio}}</td>
+            <td>{{jornada.fin}}</td>
+            <td>{{jornada.servicios.lenght}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>
+
+  <script>
+    $(document).ready(function() {
+      $('.progress .bar').progressbar(); // bootstrap 2
+      $('.progress .progress-bar').progressbar(); // bootstrap 3
+    });
+  </script>

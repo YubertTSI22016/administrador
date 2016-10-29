@@ -49,10 +49,19 @@
 		    templateUrl : "app/views/cliente/list.html",
 		    controller  : 'clienteCtrl'
 		});
+		$routeProvider.when("/cliente/:type/:id", {
+		    templateUrl : "app/views/cliente/view.html",
+		    controller  : 'clienteCtrl'
+		});
 
 		// ruta de Proveedores
 		$routeProvider.when("/proveedor", {
 		    templateUrl : "app/views/proveedor/list.html",
+		    controller  : 'proveedorCtrl'
+		});
+		
+		$routeProvider.when("/proveedor/:type/:id", {
+		    templateUrl : "app/views/proveedor/view.html",
 		    controller  : 'proveedorCtrl'
 		});
 

@@ -15,12 +15,17 @@
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null;
             var type = $routeParams && $routeParams['type'] ? $routeParams['type'] : null;
             
+            if(id){
+                clienteService.getId(id).then(function (data) {
+                    $scope.cliente = data;
 
+                });
 
-            clienteService.getAll().then(function (data) {
-                console.log('getAll')
+            }else{
+                clienteService.getAll().then(function (data) {
                 $scope.clientes = data;
-            });
+                });
+            }  
             
         }
 

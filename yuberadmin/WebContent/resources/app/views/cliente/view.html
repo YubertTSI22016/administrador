@@ -1,0 +1,65 @@
+﻿<link rel="stylesheet" type="text/css" href="css/progressbar/bootstrap-progressbar-3.3.0.css">
+  <!-- bootstrap progress js -->
+  <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
+
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="page-title">
+    <div class="title_left">
+      <h3>Detalle del Cliente</h3>
+    </div>
+
+  </div>
+</div>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_content">
+      <div class="row top_tiles">
+        <div class="animated flipInY col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="tile-stats">
+            <div class="icon"><i class="fa fa-user"></i>
+            </div>
+            <div class="count">{{cliente.nombre +" "+ cliente.apellido}}</div>
+
+            <h3>{{cliente.email.email}}</h3>
+            <p>Servicios solicitados: {{ cliente.cantidadServicios }}</p>
+            <p><a>Rating: {{cliente.rating}}</a>
+              <div class="progress progress_sm" style="width: 76%;margin-left: 10px;">
+                <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="{{cliente.rating}}"></div>
+              </div>
+            </p>
+          </div>
+        </div>  
+      </div>  
+      <table class="table table-hover table-striped">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Proveedor</th>
+            <th>Precio</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="servicio in cliente.servicios">
+           
+            <td>{{servicio.fecha}}</td>
+            <td>{{servicio.proveedor.usuario.nombre}}</td>
+            <td>{{servicio.precio}}</td>
+            <td>{{servicio.rating}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+    </div>
+  </div>
+</div>
+
+  <script>
+    $(document).ready(function() {
+      $('.progress .bar').progressbar(); // bootstrap 2
+      $('.progress .progress-bar').progressbar(); // bootstrap 3
+    });
+  </script>

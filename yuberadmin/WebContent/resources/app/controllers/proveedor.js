@@ -14,13 +14,24 @@
         var initialize = function(){
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null;
             var type = $routeParams && $routeParams['type'] ? $routeParams['type'] : null;
-            
 
 
-            proveedorService.getAll().then(function (data) {
+             
+            if(id){
+                proveedorService.getId(id).then(function (data) {
+                    $scope.proveedor = data;
+
+                    console.log(data);
+
+                });
+
+                console.log("algo");
+            }else{
+                proveedorService.getAll().then(function (data) {
                 console.log('getAll')
                 $scope.proveedores = data;
-            });
+                });
+            }           
             
         }
 

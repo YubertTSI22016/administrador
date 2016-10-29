@@ -31,13 +31,27 @@
 
            return defer.promise;
        };
+      
+      var getId = function(id){
+           var defer = $q.defer();
 
+           $http.get(CONFIG.URL + '/vertical/obtenerproveedor/'+id)
+           .success(function (adm) {
+                defer.resolve(adm);
+           })
+           .error(function(){
+               defer.reject('server error')
+           });
+
+           return defer.promise;
+       };
 
 
 
        return {
            getAll  : getAll,
            remove  : remove,
+           getId   : getId
        }
 
    }
