@@ -21,35 +21,78 @@
 			
 			return (new Date((date).toString().split(" ").splice(0, 4).join(" ")));
 		}
+		var dateOption = {
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment(),
+                showDropdowns: true,
+                timePicker: false,
+                ranges: {
+                    'Ultimos 7 dias': [moment().subtract(6, 'days'), moment()],
+                    'Ultimos 30 dias': [moment().subtract(29, 'days'), moment()],
+                    'Este Mes': [moment().startOf('month'), moment().endOf('month')],
+                    'Mes anterior': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                opens: 'left',
+                buttonClasses: ['btn btn-default'],
+                applyClass: 'btn-small btn-primary',
+                cancelClass: 'btn-small',
+                format: 'DD/MM/YY',
+                separator: '',
+                locale: {
+                    applyLabel: 'Enviar',
+                    cancelLabel: 'Borrar',
+                    fromLabel: 'Desde',
+                    toLabel: '',
+                    customRangeLabel: 'Rango',
+                    daysOfWeek: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                    monthNames: ['Enero', 'Febero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                }
+            };
+		 $('#dateRange').daterangepicker(dateOption);
+         $('#dateRange span').html(startDateNuevos.format('DD/MM/YY') + ' - ' + endDateNuevos.format('DD/MM/YY'));
+         $('#dateRange').on('apply.daterangepicker', function (ev, picker) {
+        	 startDate = picker.startDate;
+        	 nowTimestamp = picker.endDate;
+             initialize();
+         });
+        var nowTimestamp = getTimeStamp( new Date()).getTime();
+		var startDate = getTimeStamp(new Date((new Date()).setDate( new Date().getDate()-7))).getTime();
 		var initialize = function() {
-			var id = $routeParams && $routeParams['id'] ? $routeParams['id']
-					: null;
-			var type = $routeParams && $routeParams['type'] ? $routeParams['type']
-					: null; 
 			 
-			var nowTimestamp = getTimeStamp( new Date()).getTime();
-			var weekAgo = getTimeStamp(new Date((new Date()).setDate( new Date().getDate()-7))).getTime();
+			
 			reporteService.reporteRatingProv(1, 10, 5).then(function(data) {
 				console.log('reporteRatingProv', data)
 				$scope.proveedores = data;
 			});
-			reporteService.reporteGanancia(0, 10, weekAgo, nowTimestamp).then(function (data) {
+			reporteService.reporteGanancia(startDate).then(function (data) {
                 console.log('reporteGanancia', data)
-                $scope.reporteGanancia = data;
+                $scope.reporteGanancia = data; 
+
+                var chartPorNuevos = Morris.Bar({
+                    element: 'gananciasVertical',
+                    data: data,
+                    xkey: 'dia',
+                    hideHover: 'auto',
+                    barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+                    ykeys: ['saldo'],
+                    labels: ['Ganancias'],
+                    xLabelAngle: 60,
+                    resize: true
+                });
             });
-			reporteService.reporteRatingProvGanancia(0, 10, weekAgo, nowTimestamp).then(function(data) {
+			reporteService.reporteRatingProvGanancia(0, 10, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteRatingProvGanacia', data)
 				$scope.proveedoresPorGanancia = data;
 			});
-			reporteService.reporteUsuariosPorGanancia(0, 10, weekAgo, nowTimestamp).then(function(data) {
+			reporteService.reporteUsuariosPorGanancia(0, 10, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosPorGanancia', data)
 				$scope.reporteUsuariosPorGanancia = data;
 			});
-			reporteService.reporteUsuariosPorUso(0, 10, weekAgo, nowTimestamp).then(function(data) {
+			reporteService.reporteUsuariosPorUso(0, 10, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosPorUso', data)
 				$scope.reporteUsuariosPorUso = data;
 			});
-			reporteService.reporteUsuariosActivos(0, 10, weekAgo, nowTimestamp).then(function(data) {
+			reporteService.reporteUsuariosActivos(0, 10, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosActivos', data)
 				$scope.reporteUsuariosActivos = data;
 			});
