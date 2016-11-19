@@ -7,7 +7,7 @@
 			$location.url('/login');
 		}
     	    	
-        $scope.hole = "Hola Mathi, probando Scope Hole"
+        $scope.hole = "Panel de Control destinado a la administración del servicio"
     }
 
 })();
