@@ -69,7 +69,16 @@
             </span>
           </div>
         </div>
-        
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">Porcentaje Retención</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <input class="form-control" type="number" placeholder="%" min="0" max="100" ng-model="configuracion.porcentajeRetencion" name="porcentajeRetencion" required>
+            <span class="messages" ng-show="configForm.porcentajeRetencion.$touched">
+              <span ng-show="configForm.porcentajeRetencion.$error.required">el porcentaje es obligatorio.</span>
+              <span ng-show="configForm.porcentajeRetencion.$error.number">el porcentaje debe ser numerico válido.</span>
+            </span>
+          </div>
+        </div>
 
         <div class="ln_solid"></div>
         <div class="form-group">

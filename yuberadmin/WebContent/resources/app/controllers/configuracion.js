@@ -25,7 +25,8 @@
                             habilitado : true,
                             tarifaBase : 0,
                             precioPorKm : 0,
-                            precioPorHora : 0
+                            precioPorHora : 0,
+                            porcentajeRetencion : 0
                         }
                         configuracionService.createTenant(nuevoTenant).then(function (data){
                             $scope.configuracion = data;
