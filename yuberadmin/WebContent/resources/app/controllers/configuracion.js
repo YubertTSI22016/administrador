@@ -13,27 +13,24 @@
         var initialize = function(){
             var id = $routeParams && $routeParams['id'] ? $routeParams['id'] : null;
             
-        
-
-
             configuracionService.getInfo().then(function (data) {
                     $scope.configuracion = data;
-                    if(data.id == null){
-                        var nuevoTenant = {
-                            nombre : "Nombre Empresa",
-                            transporte : true,
-                            habilitado : true,
-                            tarifaBase : 0,
-                            precioPorKm : 0,
-                            precioPorHora : 0,
-                            porcentajeRetencion : 0
-                        }
-                        configuracionService.createTenant(nuevoTenant).then(function (data){
-                            $scope.configuracion = data;
-                            
-                        });
-                    }
-                    console.log(data);
+//                    if(data.id == null){
+//                        var nuevoTenant = {
+//                            nombre : "Nombre Empresa",
+//                            transporte : true,
+//                            habilitado : true,
+//                            tarifaBase : 0,
+//                            precioPorKm : 0,
+//                            precioPorHora : 0,
+//                            css : ''
+//                        }
+//                        configuracionService.createTenant(nuevoTenant).then(function (data){
+//                            $scope.configuracion = data;
+//                            
+//                        });
+//                    }
+//                    console.log(data);
             });
         }
 
