@@ -21,33 +21,39 @@
 			
 			return (new Date((date).toString().split(" ").splice(0, 4).join(" ")));
 		}
+        var nowTimestamp = getTimeStamp( new Date()).getTime();
+		var startDate = getTimeStamp(new Date((new Date()).setDate( new Date().getDate()-7))).getTime();
+		
+	    var startDateNuevos = moment().subtract(29, 'days');
+	    var endDateNuevos = moment();
+	        
 		var dateOption = {
-                startDate: moment().subtract(29, 'days'),
-                endDate: moment(),
-                showDropdowns: true,
-                timePicker: false,
-                ranges: {
-                    'Ultimos 7 dias': [moment().subtract(6, 'days'), moment()],
-                    'Ultimos 30 dias': [moment().subtract(29, 'days'), moment()],
-                    'Este Mes': [moment().startOf('month'), moment().endOf('month')],
-                    'Mes anterior': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                },
-                opens: 'left',
-                buttonClasses: ['btn btn-default'],
-                applyClass: 'btn-small btn-primary',
-                cancelClass: 'btn-small',
-                format: 'DD/MM/YY',
-                separator: '',
-                locale: {
-                    applyLabel: 'Enviar',
-                    cancelLabel: 'Borrar',
-                    fromLabel: 'Desde',
-                    toLabel: '',
-                    customRangeLabel: 'Rango',
-                    daysOfWeek: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-                    monthNames: ['Enero', 'Febero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                }
-            };
+            startDate: moment().subtract(29, 'days'),
+            endDate: moment(),
+            showDropdowns: true,
+            timePicker: false,
+            ranges: {
+                'Ultimos 7 dias': [moment().subtract(6, 'days'), moment()],
+                'Ultimos 30 dias': [moment().subtract(29, 'days'), moment()],
+                'Este Mes': [moment().startOf('month'), moment().endOf('month')],
+                'Mes anterior': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            },
+            opens: 'left',
+            buttonClasses: ['btn btn-default'],
+            applyClass: 'btn-small btn-primary',
+            cancelClass: 'btn-small',
+            format: 'DD/MM/YY',
+            separator: '',
+            locale: {
+                applyLabel: 'Enviar',
+                cancelLabel: 'Borrar',
+                fromLabel: 'Desde',
+                toLabel: '',
+                customRangeLabel: 'Rango',
+                daysOfWeek: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
+                monthNames: ['Enero', 'Febero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+            }
+        };
 		 $('#dateRange').daterangepicker(dateOption);
          $('#dateRange span').html(startDateNuevos.format('DD/MM/YY') + ' - ' + endDateNuevos.format('DD/MM/YY'));
          $('#dateRange').on('apply.daterangepicker', function (ev, picker) {
@@ -55,8 +61,7 @@
         	 nowTimestamp = picker.endDate;
              initialize();
          });
-        var nowTimestamp = getTimeStamp( new Date()).getTime();
-		var startDate = getTimeStamp(new Date((new Date()).setDate( new Date().getDate()-7))).getTime();
+
 		var initialize = function() {
 			 
 			

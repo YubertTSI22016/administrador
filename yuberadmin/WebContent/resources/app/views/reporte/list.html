@@ -19,7 +19,6 @@
 	type="text/css" />
 <link href="js/datatables/scroller.bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
-
 <div class="col-md-12 col-sm-12 col-xs-12">
 	<div class="page-title">
 		<div class="title_left">
@@ -30,6 +29,45 @@
 				style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
 				<i class="glyphicon glyphicon-calendar fa fa-calendar"></i> <span></span>
 				<b class="caret"></b>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<h2>
+	Ganancias
+</h2>
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="x_panel" id="ganancias">
+		<div class="row x_title">
+			<div class="col-md-6">
+				<h3>Ganancias</h3>
+			</div>
+		</div>
+
+		<div class="x_content">
+			<div style="width: 100%;">
+				<div id="gananciasVertical" class="demo-placeholder"
+					style="width: 100%; height: 250px;"></div>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<table
+						class="table table-striped responsive-utilities jambo_table bulk_action">
+						<thead>
+							<tr class="headings">
+								<th>Fecha</th>
+								<th>Saldo</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="g in reporteGanancia">
+								<td>{{g.dia}}</td>
+								<td>{{g.saldo}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -268,43 +306,6 @@
 		</div>
 	</div>
 </div>
-<h2>
-	Ganancias
-</h2>
-
-<div class="col-md-12 col-sm-12 col-xs-12">
-	<div class="x_panel" id="ganancias">
-		<div class="row x_title">
-			<div class="col-md-6">
-				<h3>Ganancias</h3>
-			</div>
-		</div>
-
-		<div class="x_content">
-			<div style="width: 100%;">
-				<div id="gananciasVertical" class="demo-placeholder"
-					style="width: 100%; height: 250px;"></div>
-				<div class="col-md-12 col-sm-12 col-xs-12">
-					<table
-						class="table table-striped responsive-utilities jambo_table bulk_action">
-						<thead>
-							<tr class="headings">
-								<th>Fecha</th>
-								<th>Saldo</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="g in reporteGanancia">
-								<td>{{g.dia}}</td>
-								<td>{{g.saldo}}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 
 <!-- Datatables-->
 <script src="js/datatables/jquery.dataTables.min.js"></script>
@@ -315,9 +316,9 @@
 <script src="js/datatables/dataTables.keyTable.min.js"></script>
 <script src="js/datatables/dataTables.responsive.min.js"></script>
 <script src="js/datatables/responsive.bootstrap.min.js"></script>
-<script src="js/datatables/dataTables.scroller.min.js"></script>
+<script src="js/datatables/dataTables.scroller.min.js"></script> 
 
 <script src="js/moris/morris.min.js"></script>
 <script src="js/moris/raphael-min.js"></script>
-<script src="js/datepicker/daterangepicker.js"></script>
 <script src="js/moment/moment.min.js"></script>
+<script src="js/datepicker/daterangepicker.js"></script>
