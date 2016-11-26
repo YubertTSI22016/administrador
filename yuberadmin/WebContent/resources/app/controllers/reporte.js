@@ -61,7 +61,21 @@
         	 nowTimestamp = picker.endDate;
              initialize();
          });
-
+         var chartPorNuevos;
+         
+         var initChart = function(data){
+        	 chartPorNuevos = Morris.Bar({
+	             element: 'gananciasVertical',
+	             data: data,
+	             xkey: 'dia',
+	             hideHover: 'auto',
+	             barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
+	             ykeys: ['saldo'],
+	             labels: ['Ganancias'],
+	             xLabelAngle: 60,
+	             resize: true
+	         });
+         }
 		var initialize = function() {
 			 
 			
@@ -72,32 +86,26 @@
 			reporteService.reporteGanancia(startDate).then(function (data) {
                 console.log('reporteGanancia', data)
                 $scope.reporteGanancia = data; 
-
-                var chartPorNuevos = Morris.Bar({
-                    element: 'gananciasVertical',
-                    data: data,
-                    xkey: 'dia',
-                    hideHover: 'auto',
-                    barColors: ['#26B99A', '#34495E', '#ACADAC', '#3498DB'],
-                    ykeys: ['saldo'],
-                    labels: ['Ganancias'],
-                    xLabelAngle: 60,
-                    resize: true
-                });
+                if(chartPorNuevos){
+                	chartPorNuevos.setData(data);
+                }else{
+                	initChart(data);
+                }
+                
             });
-			reporteService.reporteRatingProvGanancia(0, 10, startDate, nowTimestamp).then(function(data) {
+			reporteService.reporteRatingProvGanancia(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteRatingProvGanacia', data)
 				$scope.proveedoresPorGanancia = data;
 			});
-			reporteService.reporteUsuariosPorGanancia(0, 10, startDate, nowTimestamp).then(function(data) {
+			reporteService.reporteUsuariosPorGanancia(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosPorGanancia', data)
 				$scope.reporteUsuariosPorGanancia = data;
 			});
-			reporteService.reporteUsuariosPorUso(0, 10, startDate, nowTimestamp).then(function(data) {
+			reporteService.reporteUsuariosPorUso(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosPorUso', data)
 				$scope.reporteUsuariosPorUso = data;
 			});
-			reporteService.reporteUsuariosActivos(0, 10, startDate, nowTimestamp).then(function(data) {
+			reporteService.reporteUsuariosActivos(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosActivos', data)
 				$scope.reporteUsuariosActivos = data;
 			});
