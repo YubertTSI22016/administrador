@@ -24,7 +24,7 @@
             </span>
           </div>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label class="col-md-3 col-sm-3 col-xs-12 control-label">Habilitado
             <br>
             <small class="text-navy">Habilitar/Deshabilitar Servicio</small>
@@ -37,32 +37,32 @@
               </label>
             </div>
           </div>
-        </div>
+        </div>-->
         <div class="ln_solid"></div>
         <div class="form-group">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">Tarifa Base</label>
           <div class="col-md-9 col-sm-9 col-xs-12">
-            <input class="form-control" type="number" placeholder="Ingrese una tarifa bas" ng-model="configuracion.tarifaBase" name="tarifaBase" required>
+            <input class="form-control" type="number" placeholder="Ingrese una tarifa base" ng-model="configuracion.tarifaBase" name="tarifaBase" required>
             <span class="messages" ng-show="configForm.tarifaBase.$touched">
               <span ng-show="configForm.tarifaBase.$error.required">La tarifa base es obligatoria.</span>
               <span ng-show="configForm.tarifaBase.$error.number">La tarifa base debe ser numerica.</span>
             </span>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="configuracion.transporte">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">Precio por KM</label>
           <div class="col-md-9 col-sm-9 col-xs-12">
-            <input type="number" class="form-control" type="number" placeholder="Ingrese el precio por KM" ng-model="configuracion.precioPorKm" name="precioPorKm" required>
+            <input type="number" class="form-control" type="number" placeholder="Ingrese el precio por KM" ng-model="configuracion.precioPorKm" name="precioPorKm">
             <span class="messages" ng-show="configForm.precioPorKm.$touched">
               <span ng-show="configForm.precioPorKm.$error.required">el Precio por KM es obligatorio.</span>
               <span ng-show="configForm.precioPorKm.$error.number">el Precio por KM debe ser numerico.</span>
             </span>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-if="!configuracion.transporte">
           <label class="control-label col-md-3 col-sm-3 col-xs-12">Precio por Hora</label>
           <div class="col-md-9 col-sm-9 col-xs-12">
-            <input type="number" class="form-control" type="number" placeholder="Ingrese el precio por hora" ng-model="configuracion.precioPorHora" name="precioPorHora" required>
+            <input type="number" class="form-control" type="number" placeholder="Ingrese el precio por hora" ng-model="configuracion.precioPorHora" name="precioPorHora">
              <span class="messages" ng-show="configForm.precioPorHora.$touched">
               <span ng-show="configForm.precioPorHora.$error.required">el Precio por hora es obligatorio.</span>
               <span ng-show="configForm.precioPorHora.$error.number">el Precio por hora debe ser numerico.</span>
