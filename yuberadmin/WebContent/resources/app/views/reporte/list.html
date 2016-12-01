@@ -61,7 +61,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="g in reporteGanancia">
+							<tr ng-repeat="g in reporteGanancia | orderBy: saldo">
 								<td>{{g.dia}}</td>
 								<td>{{g.saldo}}</td>
 							</tr>
@@ -98,7 +98,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="proveedor in proveedores">
+					<tr ng-repeat="proveedor in proveedores | orderBy:rating">
 						<td>{{proveedor.usuario.email.email}}</td>
 						<td>{{proveedor.usuario.nombre}}</td>
 						<td>{{proveedor.usuario.apellido}}</td>
@@ -133,15 +133,13 @@
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th>Usuario</th>
 						<th>Nombre</th>
 						<th>Apellido</th>
 						<th>Ganancia</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="proveedor in proveedoresPorGanancia">
-						<td>{{proveedor.email}}</td>
+					<tr ng-repeat="proveedor in proveedoresPorGanancia | orderBy:ganancia">
 						<td>{{proveedor.nombre}}</td>
 						<td>{{proveedor.apellido}}</td>
 						<td>{{proveedor.ganancia}}
@@ -170,16 +168,14 @@
 			</p>
 			<table class="table table-hover table-striped">
 				<thead>
-					<tr>
-						<th>Usuario</th>
+					<tr> 
 						<th>Nombre</th>
 						<th>Apellido</th>
 						<th>Ganancia</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="usr in reporteUsuariosPorUso">
-						<td>{{usr.email}}</td>
+					<tr ng-repeat="usr in reporteUsuariosPorGanancia | orderBy:ganancia">
 						<td>{{usr.nombre}}</td>
 						<td>{{usr.apellido}}</td>
 						<td>{{usr.ganancia}}
@@ -216,7 +212,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="usr in reporteUsuariosActivos">
+					<tr ng-repeat="usr in reporteUsuariosActivos | orderBy: cantidad">
 						<td>{{usr.email.email}}</td>
 						<td>{{usr.nombre}}</td>
 						<td>{{usr.apellido}}</td>
@@ -247,15 +243,13 @@
 			<table class="table table-hover table-striped">
 				<thead>
 					<tr>
-						<th>Usuario</th>
 						<th>Nombre</th>
 						<th>Apellido</th>
 						<th>Cantidad</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="usr in reporteUsuariosPorUso">
-						<td>{{usr.email}}</td>
+					<tr ng-repeat="usr in reporteUsuariosPorUso | orderBy: cantidad">			 
 						<td>{{usr.nombre}}</td>
 						<td>{{usr.apellido}}</td>
 						<td>{{usr.cantidad}}

@@ -2,10 +2,10 @@
 	'use strict';
 	angular.module('yuberAdmin').controller(
 			'reporteCtrl',
-			[ '$scope', '$routeParams', 'reporteService', '$localStorage',
+			[ '$scope', '$timeout', '$routeParams', 'reporteService', '$localStorage',
 					'$location', reporteCtrl ]);
 
-	function reporteCtrl($scope, $routeParams, reporteService, $localStorage,
+	function reporteCtrl($scope,$timeout, $routeParams, reporteService, $localStorage,
 			$location) {
 		if (!$localStorage.empleadoLogueado) {
 			$location.url('/login');
@@ -26,7 +26,8 @@
 		
 	    var startDateNuevos = moment().subtract(29, 'days');
 	    var endDateNuevos = moment();
-	        
+	    startDate = startDateNuevos;
+	    nowTimestamp = endDateNuevos;
 		var dateOption = {
             startDate: moment().subtract(29, 'days'),
             endDate: moment(),
@@ -81,7 +82,9 @@
 			
 			reporteService.reporteRatingProv(1, 10, 5).then(function(data) {
 				console.log('reporteRatingProv', data)
+				$timeout(function(){
 				$scope.proveedores = data;
+				}, 0);
 			});
 			reporteService.reporteGanancia(startDate).then(function (data) {
                 console.log('reporteGanancia', data)
@@ -95,19 +98,28 @@
             });
 			reporteService.reporteRatingProvGanancia(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteRatingProvGanacia', data)
+				$timeout(function(){
+					
 				$scope.proveedoresPorGanancia = data;
+				}, 0);
 			});
 			reporteService.reporteUsuariosPorGanancia(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosPorGanancia', data)
+				$timeout(function(){
 				$scope.reporteUsuariosPorGanancia = data;
+			}, 0);
 			});
 			reporteService.reporteUsuariosPorUso(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosPorUso', data)
+				$timeout(function(){
 				$scope.reporteUsuariosPorUso = data;
+			}, 0);
 			});
 			reporteService.reporteUsuariosActivos(0, 20, startDate, nowTimestamp).then(function(data) {
 				console.log('reporteUsuariosActivos', data)
+				$timeout(function(){
 				$scope.reporteUsuariosActivos = data;
+			}, 0);
 			});
 		}
 
